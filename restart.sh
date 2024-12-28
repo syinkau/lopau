@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Nama aplikasi Heroku
-APP_NAME="miusnrdasa"
+APP_NAME="lihaopengpeng"
 
 # Token API Heroku Anda
 HEROKU_API_TOKEN="HRKU-2c052e97-67d1-492b-9cb4-f47b7e8a069e"

@@ -50,6 +50,10 @@ RUN chmod +x /usr/local/bin/run.sh
 COPY restart.sh /usr/local/bin/restart.sh
 RUN chmod +x /usr/local/bin/restart.sh
 
+# Script untuk restart dynos menggunakan Heroku API
+COPY scheduler.sh /usr/local/bin/scheduler.sh
+RUN chmod +x /usr/local/bin/scheduler.sh
+
 # Menambahkan cron job untuk auto-restart dynos setiap 5 menit
 RUN echo "*/4 * * * * /usr/local/bin/restart.sh >> /var/log/cron.log 2>&1" > /etc/cron.d/restart
 RUN crontab /etc/cron.d/restart
@@ -58,5 +62,5 @@ RUN crontab /etc/cron.d/restart
 ENV PORT=8080
 EXPOSE 8080
 
-# Jalankan cron dan aplikasi utama
-CMD ["/usr/local/bin/run.sh"]
+# Tentukan perintah utama yang akan dijalankan
+CMD ["/bin/bash", "/usr/local/bin/scheduler.sh"]

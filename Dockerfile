@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /app
+WORKDIR /usr/local/bin
 
 # Enable swap
 RUN fallocate -l 1G /swapfile 
